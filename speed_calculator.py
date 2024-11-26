@@ -20,40 +20,48 @@ def submit_desired_speed():
 # Initializes the window
 main_window = Tk()
 
+# Trying for a more modern style using ttk 
+style = ttk.Style()
+style.theme_use('default')
+style.configure("TLabel", background = "#FFFFFF", font = ("Arial", 12))
+style.configure("TButton", background = "#a7b2c0", font = ("Arial", 10), foreground = "#FFFFFF")
+
 # Title of the window
 main_window.title("Speed Calculator")
+
+# Changing the background colour of main_window
+main_window.configure(bg = "#FFFFFF")
 
 # Size of the window
 main_window.geometry("400x600")
 
 # Adds a label for the entry box current_speed
-current_speed_label = Label(main_window, text = "Enter the current speed")
+current_speed_label = ttk.Label(main_window, text = "Enter the current speed")
 current_speed_label.pack()
 current_speed_label.place(relx = 0.5, rely = 0.05, anchor = 'center')
 
 # Adds an entry box for current_speed
-current_speed = Entry(main_window)
+current_speed = ttk.Entry(main_window)
 current_speed.pack()
 current_speed.place(relx = 0.5, rely = 0.1, anchor = 'center')
 
 # Adds a button to submit the current_speed
-current_speed_submit = Button(
-    current_speed,
+current_speed_submit = ttk.Button(
+    main_window,
     text = "Submit",
-    padx = 0.5,
-    pady = 0.5,
-    command = submit_current_speed,
-    anchor = 'center').pack()
+    command = submit_current_speed)
+current_speed_submit.pack()
+current_speed_submit.place(relx = 0.5, rely = 0.15, anchor = 'center')
 
 # Adds a label for the entry box desired_speed
-desired_speed_label = Label(main_window, text = "Enter your desired speed")
+desired_speed_label = ttk.Label(main_window, text = "Enter your desired speed")
 desired_speed_label.pack()
-desired_speed_label.place(relx = 0.5, rely = 0.2, anchor = 'center')
+desired_speed_label.place(relx = 0.5, rely = 0.3, anchor = 'center')
 
 # Adds an entry box for desired_speed
-desired_speed = Entry(main_window)
+desired_speed = ttk.Entry(main_window)
 desired_speed.pack()
-desired_speed.place(relx = 0.5, rely = 0.25, anchor = 'center')
+desired_speed.place(relx = 0.5, rely = 0.35, anchor = 'center')
 
 # Runs the window
 main_window.mainloop()
